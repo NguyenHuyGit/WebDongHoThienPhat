@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "TimKiem_60135761";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TenDongHo", rowsPerPage: 5);
+   
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="#" rel="stylesheet" />
+    <style type="text/css">
+        .grid-footer {
+            color: #000;
+            font: 17px Calibri;
+            text-align: center;
+            font-weight: bold;
+        }
+
+            .grid-footer a {
+                background-color: #ffffff;
+                color: blue;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                padding: 1px 10px 2px 10px;
+            }
+
+                .grid-footer a:active, a:hover {
+                    background-color: #ffffff;
+                    color: #FFAD33;
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                }
+
+        #gridContent img {
+            cursor: pointer;
+        }
+
+        .alternatingRowStyle {
+            background-color: aliceblue;
+        }
+
+        table .table1 {
+            text-align: left;
+            margin-left: 0px;
+            margin-right: 0px;
+            width: 800px;
+        }
+
+        .tr, .td {
+            text-align: left;
+                  
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("TimKiem_60135761", "DongHoes_60135761", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+
+
+        <table class="table1" align="center">
+            <tr>
+                <td>
+                    <div> Mã đồng hồ</div>
+                </td>
+                <td>
+                    <input type="text" name="maDH" value="@ViewBag.maDH" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>Tên đồng hồ</td>
+                <td>
+                    <input type="text" name="tenDH" value="@ViewBag.tenDH" />
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td>Giá từ</td>
+                <td>
+                    <input type="text" name="giaMin" value="@ViewBag.giaMin" />
+                    Đến<input type="text" name="giaMax" value="@ViewBag.giaMax" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>Loại đồng hồ</td>
+                <td>
+                    @Html.DropDownList("MaLoaiDH", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td>Nhà cung cấp</td>
+                <td>
+                    @Html.DropDownList("MaNCC", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:120px;
+                background-color: blue;color:white" />
+                    <input type="button" name="Nhapmoi" value="Làm mới" style="margin-left: 5px;width:120px;
+                background-color: blue;color:white" onclick="location.href='@Url.Action("TimKiem_60135761", "DongHoes_60135761/TimKiem_60135761")'" />
+
+                </td>
+            </tr>
+        </table>
+        }
+    </div>
+    <div id="gridContent">
+        <p style="color: red;"> @ViewBag.TB</p>
+        @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+            columns: new[]
+            {
+                grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+                grid.Column("MaDH","Mã đồng hồ"),
+                grid.Column("TenDongHo","Tên đồng hồ"),
+                grid.Column("AnhSanPham","Ảnh sản phẩm"),
+                grid.Column("GiaBan","Gía bán",format:@<text> @item.GiaBan.ToString("#,##0 đồng")</text>),
+                grid.Column("Mota","Mô tả"),
+                grid.Column("LoaiDongHo.TenLoaiDH","Loại đồng hồ"),
+                grid.Column("NhaCungCap.TenNCC","Nhà cung cấp"),
+                grid.Column("GhiChu","Ghi chú"),
+                grid.Column("Chức năng",format:@<text>
+                    <a href="@Url.Action("Edit", new {id = item.MaDH})"><abbr title="Cập nhật dữ liệu"><img width="20" height="20" src="~/Images/edit.png" /></abbr></a>
+                    <a href="@Url.Action("Details", new {id = item.MaDH})"><abbr title="Chi tiết"><img width="20" height="20" src="~/Images/details.png" /></abbr></a>
+                    <a href="@Url.Action("Delete", new {id = item.MaDH})"><abbr title="Xoá"><img width="20" height="20" src="~/Images/delete.png" /></abbr></a>
+</text>)
+}
+)
+    </div>
+</body>
+</html>
+

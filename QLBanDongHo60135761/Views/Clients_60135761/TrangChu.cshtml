@@ -1,0 +1,112 @@
+﻿@model IEnumerable<QLBanDongHo60135761.Models.DongHo>
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+
+<head>
+    <style>
+        .cart {
+            width: 260px;
+            height: 325px;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+            .cart:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        img {
+            cursor: pointer;
+        }
+
+        #margin-cart {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            #margin-cart span {
+                display: block;
+                margin-top: 20px;
+                padding-top: 5px;
+                font-size: 18px;
+                color: #0026ff;
+                font-weight: bold;
+            }
+
+            #search-box {
+                width: 50%;
+                height: 50px;
+                
+                padding: 10px 7px;
+                font-size: 18px;
+                border-radius: 5px;
+                border: 1px solid gray;
+                margin: 10px auto;
+            }
+            #search-box input {
+               width: 90%;
+                outline: none;
+                border: none;                
+
+            }
+
+        .buy {
+            margin-top: 2px;
+            display: inline-block;
+            width: 100%;
+            max-width: 120px;
+            height: 24px;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #696969;
+            
+        }
+        .cart p {
+            height: 22px;
+            font-size: 16px;
+            overflow: hidden;
+            display: inline-block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+        }
+
+
+            .buy:hover {
+                background-color: #00008B;
+                color: white;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<div>
+    <div id="search-box">
+        <input type="text" name="search-bar" value="" placeholder="Tìm kiếm" />        
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-3" id="margin-cart">
+                <div class="cart">
+                    <p style="margin-bottom: 0;"><b>@Html.DisplayFor(model => item.TenDongHo)</b></p>
+                    <div style="height: 200px; width: 200px;">
+                        <img src="~/Images/@Url.Content(item.AnhSanPham)" style="height: 100%; width: 100%; margin: 10px;" />
+                    </div>
+                    <span>Giá: @Html.DisplayFor(model => item.GiaBan) <br />
+                           <a href="#" class="buy">Mua</a>
+                    </span>
+                    
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

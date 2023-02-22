@@ -1,0 +1,42 @@
+﻿@model QLBanDongHo60135761.Models.QuyenDangNhapNhanVien
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 style="color: red;">Bạn có chắc muốn xoá quyền này?</h3>
+<div style="margin-bottom: 10px; font-size: 16px; padding-left: 20px;">
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã quyền đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaQuyenDangNhap)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên quyền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenQuyenDangNhap)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-danger" style="width: 120px;" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+        </div>
+    }
+</div>

@@ -1,0 +1,37 @@
+﻿@model QLBanDongHo60135761.Models.ChucVu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT</h2>
+
+<div style="font-size: 16px;">
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã chức vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaChucVu)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên chức vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChucVu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaChucVu }, new { @class = "btn btn-success", @style = "width: 120px;" })
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+</p>

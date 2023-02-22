@@ -1,0 +1,41 @@
+﻿@model QLBanDongHo60135761.Models.NhaCungCap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT</h2>
+
+<div style="margin-bottom: 10px; font-size: 16px;">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã nhà cung cấp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNCC)
+        </dd>
+        <dt>
+            Tên nhà cung cấp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNCC)
+        </dd>
+
+        <dt>
+            Tên quốc gia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuocGia.TenQuocGia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaNCC }, new { @class = "btn btn-success", @style = "width: 120px;" })
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+</p>

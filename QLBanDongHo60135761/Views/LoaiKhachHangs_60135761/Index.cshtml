@@ -1,0 +1,42 @@
+﻿@model IEnumerable<QLBanDongHo60135761.Models.LoaiKhachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>DANH SÁCH LOẠI KHÁCH HÀNG</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+</p>
+<table class="table table-bordered">
+    <tr style="font-size: 16px; background-color: #E0FFFF; ">
+        <th>
+            Mã loại khách hàng
+        </th>
+        <th>
+            Tên loại khách hàng
+        </th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="font-size: 16px;">
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoaiKH)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { id = item.MaLoaiKH }, new { @class = "btn btn-success", @style = "width: 120px;" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaLoaiKH }, new { @class = "btn btn-info", @style = "width: 120px;" })
+                @Html.ActionLink("Xoá", "Delete", new { id = item.MaLoaiKH }, new { @class = "btn btn-danger", @style = "width: 120px;" })
+            </td>
+        </tr>
+    }
+
+</table>

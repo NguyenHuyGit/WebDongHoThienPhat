@@ -1,0 +1,109 @@
+﻿@model QLBanDongHo60135761.Models.KhachHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string gtinh = "";
+}
+
+
+<h3 style="color: red;">Bạn có chắc muốn xoá thông tin này?</h3>
+<div style="font-size: 16px; padding-left: 20px;">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+        <dt>
+            Họ tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenKH)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @{if (Model.GioiTinhKH == true)
+                { gtinh = "Nam"; }
+                else
+                { gtinh = "Nữ"; }
+            }
+            @gtinh
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiKH)
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinhKH)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDTKH)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Tên đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDangNhap)
+        </dd>
+
+        <dt>
+            Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            Loại khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiKhachHang.TenLoaiKH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-left:100px;margin-top: 20px;">
+            <input type="submit" value="Xoá" class="btn btn-danger" style="width: 120px;" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+        </div>
+    }
+</div>

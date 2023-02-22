@@ -1,0 +1,44 @@
+﻿@model IEnumerable<QLBanDongHo60135761.Models.ChucVu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>DANH SÁCH CHỨC VỤ</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+</p>
+<table class="table table-bordered">
+    <tr style="font-size: 16px; background-color: #E0FFFF; ">
+        <th>
+            Mã chức vụ
+        </th>
+        <th>
+            Tên chức vụ
+        </th>
+        <td>
+            Chức năng
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="font-size: 16px;">
+            <td>
+                @Html.DisplayFor(modelItem => item.MaChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChucVu)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { id = item.MaChucVu }, new { @class = "btn btn-success", @style = "width: 120px;" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaChucVu }, new { @class = "btn btn-info", @style = "width: 120px;" })
+                @Html.ActionLink("Xoá", "Delete", new { id = item.MaChucVu }, new { @class = "btn btn-danger", @style = "width: 120px;" })
+            </td>
+        </tr>
+    }
+
+</table>

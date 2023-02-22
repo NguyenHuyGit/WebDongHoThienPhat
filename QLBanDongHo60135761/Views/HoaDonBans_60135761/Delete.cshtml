@@ -1,0 +1,101 @@
+﻿@model QLBanDongHo60135761.Models.HoaDonBan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 style="color:red;">Bạn có chắc muốn xoá hoá đơn này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal" style="font-size: 16px;padding-left: 20px;" ">
+        <dt>
+            Mã hoá đơn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaHD)
+        </dd>
+        <dt>
+            Ngày đặt hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDatHang)
+        </dd>
+
+        <dt>
+            Ngày giao hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGiaoHang)
+        </dd>
+
+        <dt>
+            Tên người nhận
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiNhan)
+        </dd>
+        <dt>
+           Điện thoại người nhận
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDTNguoiNhan)
+        </dd>
+        <dt>
+            Địa chỉ nhận hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiNhanHang)
+        </dd>
+
+        <dt>
+            Tình trạng hoá đơn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangHoaDon)
+        </dd>
+
+        <dt style="width: 180px; padding-right: 18px;">
+            Hình thức thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhThucThanhToan)
+        </dd>
+
+        <dt>
+            Họ tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.HoTenKH)
+        </dd>
+
+        <dt>
+            Họ tên nhân viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVien.HoTenNV)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-left:70px;margin-top: 20px;">
+            <input type="submit" value="Xoá" class="btn btn-danger" style="width: 120px;" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+        </div>
+    }
+</div>

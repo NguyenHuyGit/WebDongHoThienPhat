@@ -1,0 +1,35 @@
+﻿@model QLBanDongHo60135761.Models.LoaiDongHo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT</h2>
+<div style="margin-bottom: 10px; font-size: 16px;">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã loại đồng hồ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoaiDH)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại đồng hồ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoaiDH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaLoaiDH }, new { @class = "btn btn-success", @style = "width: 120px;" })
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-primary", @style = "width: 120px;" })
+</p>
