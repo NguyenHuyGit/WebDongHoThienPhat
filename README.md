@@ -10,3 +10,4 @@
 + Show list of watches on home page
 + CRUD: employee, watch, category,...
 + Register new customer account
++ Search watch, customer, employee
