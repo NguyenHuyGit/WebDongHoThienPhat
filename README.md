@@ -7,6 +7,6 @@
 + ASP.NET MVC, Entity framework
 + Database: SQL
 - Main functions: 
-+ Show list of watch to home page
++ Show list of watches on home page
 + CRUD: employee, watch, category,...
 + Register new customer account
